@@ -1,0 +1,102 @@
+:root{
+  --accent:#0d6efd;
+  --muted:#6c757d;
+}
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.4}
+.museum-header{background:linear-gradient(90deg,#f8fafc, #eef2ff);border-bottom:1px solid #e9ecef}
+.logo{font-weight:700;font-size:1.2rem;cursor:pointer}
+
+.landing{height:100vh;position:relative;background:linear-gradient(180deg,#0b2a45 0%, #06364f 60%);color:#fff}
+.landing-inner{max-width:980px}
+.landing h1{letter-spacing:2px}
+.boarding-pass{background:rgba(255,255,255,0.06);border-radius:8px}
+.doors{position:absolute;inset:0;pointer-events:none}
+.door{position:absolute;top:0;bottom:0;width:50%;background:#0c2340}
+.door-left{left:0}
+.door-right{right:0}
+
+/* Exhibits */
+.exhibit .frame{border:6px solid #f1f1f1;border-radius:6px}
+.exhibit-photo{height:260px;object-fit:cover;border-radius:4px}
+.museum-plaque{background:#f8f9fa;border-left:4px solid var(--accent);padding:0.5rem 0.75rem;margin-top:0.5rem}
+
+/* Artifact cards */
+.artifact-card{background:linear-gradient(180deg,#fff,#f8fafc);border-radius:8px;cursor:pointer}
+.artifact-card:hover{transform:translateY(-4px)}
+
+/* Flight path timeline */
+.flight-path{display:flex;flex-direction:column;gap:1.5rem}
+.fp-item{background:#fff;padding:1rem 1.25rem;border-radius:6px;border-left:6px solid var(--accent);box-shadow:0 2px 6px rgba(0,0,0,0.04)}
+
+/* Memory Exhibition frames */
+.frame-large{border:8px solid #f8f8f6;border-radius:6px}
+.frame-sm{border:6px solid #fff;border-radius:6px}
+.frame-sm img{height:120px;object-fit:cover;border-radius:4px}
+
+/* Crew ID cards */
+.id-card{display:flex;gap:0.75rem;align-items:center;border-radius:6px;background:#fff}
+.id-card .initials{width:48px;height:48px;border-radius:6px;background:#0d6efd;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.id-card .info{font-size:.95rem}
+
+/* Achievements & badges */
+.achievement-panel .badge-item{padding:.4rem .6rem;border-radius:6px;background:#eef2ff;margin-right:.5rem}
+.meter{height:14px;background:#eef2f7;border-radius:6px;margin-top:.5rem}
+.meter::after{content:'';display:block;height:100%;width:0;background:linear-gradient(90deg,#0d6efd,#00b5ff);border-radius:6px}
+
+/* Radio room */
+.comm-panel{background:#071826;padding:1rem;border-radius:6px}
+.radio-box{min-height:180px;border-radius:8px}
+
+/* Final board and dimming */
+.dimmed{filter:grayscale(.2) brightness(.7)}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}
+
+/* Passenger cards */
+.passenger-card{transition:transform .28s ease}
+.passenger-card:hover{transform:translateY(-6px)}
+.passenger-card .reveal{height:0;overflow:hidden;transition:height .28s ease;padding:0 1rem}
+.passenger-card:hover .reveal{height:48px;padding:0.75rem 1rem}
+
+/* Crew card flip */
+.crew-card{perspective:1000px;cursor:pointer}
+.crew-card > div{width:100%;height:220px;border-radius:8px;background:#fff;backface-visibility:hidden;transform-style:preserve-3d;transition:transform .6s}
+.crew-card .card-front{background:#f8f9fa}
+.crew-card .card-back{background:#fff;transform:rotateY(180deg);position:absolute;left:0;top:0;right:0;bottom:0;padding:1rem}
+.crew-card.flipped .card-front{transform:rotateY(180deg)}
+.crew-card.flipped .card-back{transform:rotateY(360deg)}
+
+.panel{background:rgba(255,255,255,0.03);border-radius:6px}
+.panel .stat{font-size:2rem;font-weight:700}
+
+.gallery img{width:100%;height:180px;object-fit:cover;border-radius:6px;transition:transform .25s ease}
+.artifact:hover img{transform:scale(1.06)}
+.artifact figcaption{text-align:center;margin-top:.5rem;color:var(--muted)}
+
+.timeline{display:flex;flex-direction:column;gap:1rem}
+.timeline-item{padding:1rem;border-left:3px solid var(--accent);background:#fff;border-radius:4px}
+
+.radio-box{min-height:160px;background:#0b2540;border-radius:8px}
+.comm-indicator{width:14px;height:14px;background:#ff4d4f;border-radius:50%;box-shadow:0 0 8px rgba(255,77,79,.8);animation:blink 1.3s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+.departure-board{display:inline-block;padding:1rem 1.5rem;border:2px dashed #ddd;border-radius:6px}
+.runway{height:160px;position:relative;overflow:hidden}
+.plane{width:80px;height:24px;background:linear-gradient(90deg,#fff,#e9ecef);position:absolute;left:10%;top:60%;border-radius:6px}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.8);z-index:2000}
+.lightbox .lightbox-inner{position:relative;max-width:90%;max-height:90%}
+.lightbox img{max-width:100%;max-height:80vh;border-radius:6px}
+.lightbox .caption{color:#fff;text-align:center;margin-top:.5rem}
+
+/* Misc */
+.btn-primary{background:var(--accent);border-color:var(--accent)}
+
+/* Paper airplane */
+.paper-plane{position:fixed;z-index:9999;width:48px;height:48px;pointer-events:none;transform:translate(-50%,-50%)}
+
+@media(min-width:768px){.landing h1{font-size:2.25rem}}

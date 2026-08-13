@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CAAP Bacolod Aviation Museum — OJT 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <header class="museum-header">
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        <div class="logo" id="caapLogo">CAAP</div>
+        <div class="header-title text-end">
+          <div class="small">CAAP BACOLOD</div>
+          <div class="muted">Aviation Museum</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Landing / Museum Entrance -->
+    <main>
+      <section id="landing" class="landing d-flex align-items-center justify-content-center">
+        <div class="landing-inner text-center">
+          <h1 class="display-5">CAAP BACOLOD</h1>
+          <h2 class="mt-2">AVIATION MUSEUM</h2>
+          <h3 class="fw-bold mt-3">Special Exhibition — Two Interns. One Journey.</h3>
+          <p class="lead">Accounting & Finance Unit — OJT 2026</p>
+
+          <div class="boarding row g-3 justify-content-center my-4">
+            <div class="col-11 col-md-5">
+              <div class="boarding-pass p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+                  <img src="images/photo1.svg" alt="Interns" class="rounded me-3" width="80">
+                  <div class="flex-grow-1 text-start">
+                    <div class="fw-bold">Alex (Intern A)</div>
+                    <small class="text-muted">University of Example • BS Accountancy</small>
+                    <div class="mt-1 small">OJT Intern — Flight: OJT-2026 — Destination: Graduation 2027</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-11 col-md-5">
+              <div class="boarding-pass p-3 shadow-sm">
+                <div class="d-flex align-items-center">
+                  <img src="images/intern2.svg" alt="Intern B" class="rounded me-3" width="80">
+                  <div class="flex-grow-1 text-start">
+                    <div class="fw-bold">Bea (Intern B)</div>
+                    <small class="text-muted">Example State University • BS Finance</small>
+                    <div class="mt-1 small">OJT Intern — Flight: OJT-2026 — Destination: Graduation 2027</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button id="enterBtn" class="btn btn-primary btn-lg">Enter Museum</button>
+        </div>
+
+        <div class="doors">
+          <div class="door door-left"></div>
+          <div class="door door-right"></div>
+        </div>
+      </section>
+
+      <!-- Hall 1: Meet the Passengers (Museum Exhibits) -->
+      <section id="hall1" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="mb-4">Hall 1 — Meet the Passengers</h2>
+          <div class="row g-4" id="passengers">
+            <div class="col-md-6" data-aos="fade-up">
+              <figure class="exhibit">
+                <div class="frame p-3 bg-white shadow-sm">
+                  <img src="images/photo1.svg" alt="Interns photo" class="w-100 exhibit-photo">
+                  <figcaption class="mt-3 text-start">
+                    <h5 class="mb-1">Alex (Intern A)</h5>
+                    <small class="text-muted">BS Accountancy — University of Example</small>
+                    <p class="mt-2">Role: Accounting Assistant (OJT). Short: meticulous with ledgers and curious about aviation finance.</p>
+                    <div class="museum-plaque small">Fun fact: Collects boarding passes and keeps a travel ledger.</div>
+                  </figcaption>
+                </div>
+              </figure>
+            </div>
+
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+              <figure class="exhibit">
+                <div class="frame p-3 bg-white shadow-sm">
+                  <img src="images/photo2.svg" alt="Team photo" class="w-100 exhibit-photo">
+                  <figcaption class="mt-3 text-start">
+                    <h5 class="mb-1">Bea (Intern B)</h5>
+                    <small class="text-muted">BS Finance — Example State University</small>
+                    <p class="mt-2">Role: Finance Analyst Intern (OJT). Short: excellent at reconciling and translating numbers into stories.</p>
+                    <div class="museum-plaque small">Fun fact: Prefers black coffee while debugging formulas.</div>
+                  </figcaption>
+                </div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 2: Accounting & Finance Archive (Artifacts) -->
+      <section id="hall2" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="mb-4">Hall 2 — Accounting & Finance Archive</h2>
+          <div class="row g-4" id="artifacts">
+            <div class="col-md-4" data-aos="fade-up">
+              <div class="artifact-card p-3 shadow-sm" data-artifact="calculator">
+                <h5>Artifact #001 — The Calculator</h5>
+                <p class="small text-muted">Used for quick tallies and late-night reconciliations.</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="60">
+              <div class="artifact-card p-3 shadow-sm" data-artifact="spreadsheet">
+                <h5>Artifact #002 — The Spreadsheet</h5>
+                <p class="small text-muted">A living document of entries, formulas and lessons learned.</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="120">
+              <div class="artifact-card p-3 shadow-sm" data-artifact="report">
+                <h5>Artifact #003 — The Report</h5>
+                <p class="small text-muted">The first formal report submitted by the interns.</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="180">
+              <div class="artifact-card p-3 shadow-sm" data-artifact="filing">
+                <h5>Artifact #004 — The Filing System</h5>
+                <p class="small text-muted">Organized chaos — a cabinet of forms and memos.</p>
+              </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="240">
+              <div class="artifact-card p-3 shadow-sm" data-artifact="desk">
+                <h5>Artifact #005 — The Office Desk</h5>
+                <p class="small text-muted">Where many lessons were learned over coffee and spreadsheets.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 3: The Flight Log (Timeline / Runway) -->
+      <section id="hall3" class="py-5">
+        <div class="container">
+          <h2 class="mb-4">Hall 3 — The Flight Log</h2>
+          <div class="flight-path" id="flightPath">
+            <div class="fp-item" data-day="DAY 01">First arrival — orientation and introductions.</div>
+            <div class="fp-item" data-day="FIRST ASSIGNMENT">First assignment — reconciliations and learning.</div>
+            <div class="fp-item" data-day="FIRST REPORT">First report — responsibility and pride.</div>
+            <div class="fp-item" data-day="TEAM MOMENTS">Team moments — camaraderie and late-night laughs.</div>
+            <div class="fp-item" data-day="CHALLENGES">Challenges — deadlines, formulas and fixes.</div>
+            <div class="fp-item" data-day="GROWTH">Growth — skills, confidence, and perspective.</div>
+            <div class="fp-item" data-day="FINAL WEEK">Final week — farewells and reflection.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 4: Memory Exhibition (only five photos used as artifacts) -->
+      <section id="hall4" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="mb-4">Hall 4 — Memory Exhibition</h2>
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-6" data-aos="zoom-in">
+              <div class="frame-large p-3 shadow-sm">
+                <img id="heroPhoto" src="images/photo3.svg" alt="Memorable moment" class="w-100">
+                <div class="caption mt-2 small text-muted">Artifact #006 — Memorable internship moment</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div class="col-6" data-aos="fade-up"><div class="frame-sm p-2"><img src="images/photo1.svg" class="w-100" data-caption="Photo of the two interns"></div></div>
+                <div class="col-6" data-aos="fade-up" data-aos-delay="60"><div class="frame-sm p-2"><img src="images/photo2.svg" class="w-100" data-caption="Accounting & Finance team"></div></div>
+                <div class="col-6" data-aos="fade-up" data-aos-delay="120"><div class="frame-sm p-2"><img src="images/photo4.svg" class="w-100" data-caption="Office / workplace"></div></div>
+                <div class="col-6" data-aos="fade-up" data-aos-delay="180"><div class="frame-sm p-2"><img src="images/photo5.svg" class="w-100" data-caption="Final day / farewell"></div></div>
+              </div>
+              <p class="mt-3 small text-muted">Each photograph is displayed as a framed artifact — click to expand and read the memory attached to it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 5: Meet the Crew (ID cards and messages) -->
+      <section id="hall5" class="py-5">
+        <div class="container">
+          <h2 class="mb-4">Hall 5 — Meet the Crew</h2>
+          <div class="row g-3" id="crewWall">
+            <div class="col-6 col-md-3" data-aos="flip-left">
+              <div class="id-card p-3 shadow-sm" data-person="sup1"><div class="initials">AA</div><div class="info"><strong>Alvin A.</strong><div class="small text-muted">Supervisor</div></div></div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="flip-left" data-aos-delay="60">
+              <div class="id-card p-3 shadow-sm" data-person="mentor1"><div class="initials">MB</div><div class="info"><strong>Maria B.</strong><div class="small text-muted">Mentor</div></div></div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="flip-left" data-aos-delay="120">
+              <div class="id-card p-3 shadow-sm" data-person="acct1"><div class="initials">CS</div><div class="info"><strong>C. Santos</strong><div class="small text-muted">Accounting Team</div></div></div>
+            </div>
+            <div class="col-6 col-md-3" data-aos="flip-left" data-aos-delay="180">
+              <div class="id-card p-3 shadow-sm" data-person="fin1"><div class="initials">RL</div><div class="info"><strong>R. Lopez</strong><div class="small text-muted">Finance Team</div></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 6: Skills & Achievements -->
+      <section id="hall6" class="py-5 bg-light">
+        <div class="container">
+          <h2 class="mb-4">Hall 6 — Skills & Achievements</h2>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="achievement-panel p-3 shadow-sm">
+                <h5>Progress</h5>
+                <div class="progress mt-2" style="height:18px;"><div id="overallProgress" class="progress-bar bg-info" role="progressbar" style="width:0%"></div></div>
+                <div class="mt-3 d-flex gap-2 flex-wrap" id="badges"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="stats p-3 shadow-sm">
+                <div class="row">
+                  <div class="col-6"><strong>OJT DAYS</strong><div class="meter" data-value="85"></div></div>
+                  <div class="col-6"><strong>TASKS</strong><div class="meter" data-value="124"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 7: Radio Communication Room -->
+      <section id="hall7" class="py-5 text-white bg-dark">
+        <div class="container">
+          <h2 class="mb-4">Hall 7 — Radio Communication Room</h2>
+          <div class="radio-box p-4">
+            <div class="comm-panel">
+              <div class="channel">COMMUNICATION CHANNEL — <span class="badge bg-secondary">CAAP-AF-01</span></div>
+              <div id="radioFeed" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hall 6: Radio Communication Center -->
+      <section id="hall6" class="py-5 text-white bg-dark">
+        <div class="container">
+          <h2 class="mb-4">Hall 6 — Radio Communication Center</h2>
+          <div class="radio-box p-4">
+            <div class="comm-indicator" id="commIndicator"></div>
+            <div id="radioMessages" class="mt-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Hall: Departure Gate -->
+      <section id="final" class="py-5">
+        <div class="container text-center">
+          <h2>Departure Gate</h2>
+          <div class="departure-board my-4">
+            <div>FLIGHT: <span>OJT-2026</span></div>
+            <div>PASSENGERS: <span>ACCOUNTING AND FINANCE INTERNS</span></div>
+            <div>DESTINATION: <span>GRADUATION 2027</span></div>
+            <div class="status">STATUS: <span>FINAL BOARDING CALL</span></div>
+          </div>
+
+          <div class="runway">
+            <div class="plane" id="plane"></div>
+          </div>
+
+          <p class="mt-4 lead">Every museum preserves memories. Every airport prepares us for new destinations.
+            Thank you, CAAP Bacolod, for becoming both.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <div class="lightbox-inner">
+        <button id="lbClose" class="btn-close btn-close-white"></button>
+        <img id="lbImage" src="" alt="">
+        <div id="lbCaption" class="caption"></div>
+      </div>
+    </div>
+
+    <!-- Artifact Modal -->
+    <div class="modal fade" id="artifactModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="artifactTitle">Artifact</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body" id="artifactBody">
+            <p>Details about the artifact.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secret modal -->
+    <div class="modal fade" id="secretModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Secret Staff Photographs</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row g-3">
+              <div class="col-6"><img src="images/staff1.svg" class="img-fluid"></div>
+              <div class="col-6"><img src="images/staff2.svg" class="img-fluid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
