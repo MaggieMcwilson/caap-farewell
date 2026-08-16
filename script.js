@@ -33,10 +33,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   const artifactBody = document.getElementById('artifactBody');
 
   const artifactData = {
-    calculator:{title:'Artifact #001 — The Calculator',body:'A faithful desk companion. Used for quick tallies during reconciliations. What we learned: double-check inputs. Story: late-night checks saved a report.'},
-    spreadsheet:{title:'Artifact #002 — The Spreadsheet',body:'The dynamic spreadsheet where entries, formulas and validation live. What we learned: structure matters. Story: a shared sheet helped coordinate tasks.'},
-    report:{title:'Artifact #003 — The Report',body:'The first formal report submitted by the interns. What we learned: clarity in communication. Story: the report earned praise from the team.'},
-    filing:{title:'Artifact #004 — The Filing System',body:'A cabinet of forms and memos. What we learned: organization prevents headaches. Story: finding an old memo unlocked context.'},
+    calculator:{title:'Artifact #001 — The Calculator',body:'A faithful desk companion. -- double-check inputs.'},
+    spreadsheet:{title:'Artifact #002 — The Scratchs',body:'Used daily. -- be resourceful.'},
+    report:{title:'Artifact #003 — The Paid Stamp',body:'Kauti uti sa pagstamp kang mga dokumento.'},
+    filing:{title:'Artifact #004 — The Sign here',body:'Ang dila aka sign here ang kailangan sa pagpa-sign.'},
     desk:{title:'Artifact #005 — The Office Desk',body:'A personal workspace with notes, pens, and coffee rings. What we learned: small rituals help productivity. Humorous note: the sticker that survived three interns.'}
   };
 
