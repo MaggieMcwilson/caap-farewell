@@ -4,23 +4,50 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Respect reduced motion
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  const lockEntranceScroll = () => {
+    document.body.classList.add('entrance-locked');
+    document.documentElement.classList.add('entrance-locked');
+    window.scrollTo({top:0, left:0, behavior:'instant'});
+  };
+
+  const unlockEntranceScroll = () => {
+    document.body.classList.remove('entrance-locked');
+    document.documentElement.classList.remove('entrance-locked');
+  };
+
+  const preventScrollWhileClosed = (event) => {
+    if (!document.body.classList.contains('entrance-locked')) return;
+
+    const key = event.key;
+    const scrollKeys = ['ArrowDown','ArrowUp','PageDown','PageUp','Space','Home','End'];
+    if (event.type === 'wheel' || event.type === 'touchmove' || scrollKeys.includes(key)) {
+      event.preventDefault();
+    }
+  };
+
+  window.addEventListener('wheel', preventScrollWhileClosed, { passive: false });
+  window.addEventListener('touchmove', preventScrollWhileClosed, { passive: false });
+  window.addEventListener('keydown', preventScrollWhileClosed);
+  lockEntranceScroll();
+
   // GSAP ScrollTrigger registration
-  if(gsap && gsap.registerPlugin){
+  if(typeof gsap !== 'undefined' && gsap.registerPlugin && typeof ScrollTrigger !== 'undefined'){
     try{ gsap.registerPlugin(ScrollTrigger); }catch(e){}
   }
 
   const enterBtn=document.getElementById('enterBtn');
-  const doorL=document.querySelector('.door-left');
-  const doorR=document.querySelector('.door-right');
+  const gateVisual=document.querySelector('.entry-visual');
 
   enterBtn.addEventListener('click',()=>{
     if(prefersReduced){
+      unlockEntranceScroll();
       document.getElementById('landing').style.display='none';
       document.getElementById('hall1').scrollIntoView({behavior:'smooth'});
       return;
     }
-    gsap.to(doorL,{x:'-100%',duration:1.1,ease:'power2.inOut'});
-    gsap.to(doorR,{x:'100%',duration:1.1,ease:'power2.inOut',onComplete:()=>{
+
+    gsap.to(gateVisual,{opacity:0, scale:1.06, duration:1.1, ease:'power2.inOut', onComplete:()=>{
+      unlockEntranceScroll();
       document.getElementById('landing').style.display='none';
       document.getElementById('hall1').scrollIntoView({behavior:'smooth'});
     }});
@@ -51,14 +78,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   const fpItems = document.querySelectorAll('.fp-item');
   const badgesEl = document.getElementById('badges');
   const total = fpItems.length; let seen=0;
-  fpItems.forEach((item, idx)=>{
-    gsap.from(item,{y:40,opacity:0,duration:0.8,scrollTrigger:{trigger:item,start:'top 85%',toggleActions:'play none none none'}});
-    ScrollTrigger.create({trigger:item,start:'top 80%',onEnter:()=>{
-      // unlock badge for this milestone
-      const badge = document.createElement('div'); badge.className='badge-item'; badge.textContent=item.dataset.day||('Milestone '+(idx+1)); badgesEl.appendChild(badge);
-      seen++; const pct = Math.round((seen/total)*100); document.getElementById('overallProgress').style.width = pct+'%';
-    }});
-  });
+  if(typeof ScrollTrigger !== 'undefined' && fpItems.length){
+    fpItems.forEach((item, idx)=>{
+      gsap.from(item,{y:40,opacity:0,duration:0.8,scrollTrigger:{trigger:item,start:'top 85%',toggleActions:'play none none none'}});
+      ScrollTrigger.create({trigger:item,start:'top 80%',onEnter:()=>{
+        const badge = document.createElement('div'); badge.className='badge-item'; badge.textContent=item.dataset.day||('Milestone '+(idx+1)); badgesEl.appendChild(badge);
+        seen++; const pct = Math.round((seen/total)*100); document.getElementById('overallProgress').style.width = pct+'%';
+      }});
+    });
+  }
 
   // Memory exhibition: clicking thumbnails swaps hero image and opens lightbox
   const hero = document.getElementById('heroPhoto');
@@ -80,9 +108,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Radio typing simulation
   const radioFeed = document.getElementById('radioFeed');
   const transmissions = [
-    'Supervisor Alvin: "Your dedication made a difference."',
-    'Mentor Maria: "Keep asking why — it leads to learning."',
-    'Colleague C. Santos: "You survived the busiest month. Well done!"'
+    'Miss Ja: "Live a little!"',
+    'Miss Clarence: "Keep asking why — it leads to learning."',
+    'Miss Lorena: "Di anay kamo magnobya nobya, ha. Skwela danay."'
   ];
   let tIndex=0;
   function typeTransmission(){
@@ -107,25 +135,46 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Crew wall click -> show message modal
   document.querySelectorAll('.id-card').forEach(card=>{
     card.addEventListener('click',()=>{
-      const person = card.dataset.person || 'staff'; const messages = {
-        sup1:'Alvin A. — "Proud of your steady progress. Keep it up."',
-        mentor1:'Maria B. — "Always ask for context. It helps you grow."',
-        acct1:'C. Santos — "Thanks for keeping the ledgers tidy."',
-        fin1:'R. Lopez — "See you at the next briefing!"'
+      const nameEl = card.querySelector('strong');
+      const roleEl = card.querySelector('.small');
+      const imgEl = card.querySelector('.crew-photo');
+      const personName = nameEl ? nameEl.textContent.trim() : 'Crew Member';
+      const personRole = roleEl ? roleEl.textContent.trim() : 'Finance Team';
+      const personPhoto = imgEl ? imgEl.getAttribute('src') : '';
+
+      const quotes = {
+        'Miss Jing':'"Pa outgo danay, thank you!"',
+        'Miss Bibing':'"kaon kamo! pagkaon ja oh."',
+        'Miss Lorena':'"Kita niyo ja to ang balita oh!" "Pa-stamp bi kaja"',
+        'Miss Clarence':'"Di kamo huya-huya sa pag-ask, ha. Ask lang kamo."',
+        'Miss Juvy':'"Pa sort ako gang"',
+        'Miss Ems':'"Pa butang dila-dila"',
+        'Miss Francine':'"Ubosa niyo ja pagkaon oh!" "ano nanaman ja Wayne?!"🫢',
+        'Sir Kyle':'Si mark tahimik lang HAHAHAHA'
       };
-      artifactTitle.textContent='Message from the Crew'; artifactBody.innerHTML='<p>'+ (messages[person]||'Thank you for your service.') +'</p>'; artifactModal.show();
+
+      const quote = quotes[personName] || '"Thank you for your service and dedication."';
+      artifactTitle.textContent = personName + ' — ' + personRole;
+      artifactBody.innerHTML =
+        '<div class="text-center">' +
+          '<img src="' + personPhoto + '" alt="' + personName + '" class="img-fluid rounded shadow-sm mb-3" style="max-height: 360px; object-fit: cover;">' +
+          '<blockquote class="blockquote mb-0"><p class="fs-6">' + quote + '</p></blockquote>' +
+        '</div>';
+      artifactModal.show();
     });
   });
 
   // Final gate: when final is visible, dim museum and animate plane takeoff
   const plane=document.getElementById('plane');
-  ScrollTrigger.create({trigger:document.getElementById('final'),start:'top 60%',onEnter:()=>{
-    document.body.classList.add('dimmed');
-    gsap.to(plane,{x:'120%',y:'-120%',rotation:10,duration:3,ease:'power3.in'});
-    setTimeout(()=>{
-      const finalTxt = document.createElement('div'); finalTxt.className='final-text text-center'; finalTxt.innerHTML='<h3>Every journey eventually reaches its final gate.</h3><p>Thank you, CAAP Bacolod.</p>'; document.getElementById('final').appendChild(finalTxt);
-    },1600);
-  }});
+  if(typeof ScrollTrigger !== 'undefined' && plane){
+    ScrollTrigger.create({trigger:document.getElementById('final'),start:'top 60%',onEnter:()=>{
+      document.body.classList.add('dimmed');
+      gsap.to(plane,{x:'120%',y:'-120%',rotation:10,duration:3,ease:'power3.in'});
+      setTimeout(()=>{
+        const finalTxt = document.createElement('div'); finalTxt.className='final-text text-center'; finalTxt.innerHTML='<h3>Every journey eventually reaches its final gate.</h3><p>Thank you, CAAP Bacolod.</p>'; document.getElementById('final').appendChild(finalTxt);
+      },1600);
+    }});
+  }
 
   // CAAP logo secret click
   let logoCount=0; const logo=document.getElementById('caapLogo');
