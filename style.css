@@ -6,8 +6,25 @@
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.4; overflow-x:hidden}
 body.entrance-locked,
 html.entrance-locked{height:100%; overflow:hidden}
+main{position:relative;z-index:2}
 .museum-header{background:linear-gradient(90deg,#f8fafc, #eef2ff);border-bottom:1px solid #e9ecef}
 .logo{font-weight:700;font-size:1.2rem;cursor:pointer}
+
+.motion-stage{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  overflow:hidden;
+}
+
+.motion-orb{
+  position:absolute;
+  border-radius:999px;
+  background:radial-gradient(circle at 35% 35%, rgba(190,223,255,0.42), rgba(91,158,255,0.04) 62%, rgba(91,158,255,0));
+  filter:blur(7px);
+  opacity:0.16;
+}
 
 .landing{
   height:100vh;
@@ -109,7 +126,7 @@ html.entrance-locked{height:100%; overflow:hidden}
 .museum-plaque{background:#f8f9fa;border-left:4px solid var(--accent);padding:0.5rem 0.75rem;margin-top:0.5rem}
 
 /* Artifact cards */
-.artifact-card{background:linear-gradient(180deg,#fff,#f8fafc);border-radius:8px;cursor:pointer}
+.artifact-card{background:linear-gradient(180deg,#fff,#f8fafc);border-radius:8px;cursor:pointer;transform-style:preserve-3d;will-change:transform;transition:box-shadow .25s ease}
 .artifact-card:hover{transform:translateY(-4px)}
 
 /* Flight path timeline */
@@ -122,9 +139,14 @@ html.entrance-locked{height:100%; overflow:hidden}
 .frame-sm img{height:120px;object-fit:cover;border-radius:4px}
 
 /* Crew ID cards */
-.id-card{display:flex;gap:0.9rem;align-items:center;border-radius:6px;background:#fff}
+.id-card{display:flex;gap:0.9rem;align-items:center;border-radius:6px;background:#fff;transform-style:preserve-3d;will-change:transform;transition:box-shadow .25s ease}
 .id-card .crew-photo{width:76px;height:76px;border-radius:10px;object-fit:cover;flex-shrink:0;border:2px solid #dbe7ff;box-shadow:0 2px 8px rgba(13,110,253,0.18)}
 .id-card .info{font-size:.95rem}
+
+.artifact-card:hover,
+.id-card:hover{
+  box-shadow:0 16px 28px rgba(7, 28, 64, 0.16);
+}
 
 /* Achievements & badges */
 .achievement-panel .badge-item{padding:.4rem .6rem;border-radius:6px;background:#eef2ff;margin-right:.5rem}
@@ -187,3 +209,20 @@ html.entrance-locked{height:100%; overflow:hidden}
 .paper-plane{position:fixed;z-index:9999;width:48px;height:48px;pointer-events:none;transform:translate(-50%,-50%)}
 
 @media(min-width:768px){.landing h1{font-size:2.25rem}}
+
+@media (max-width: 768px){
+  .motion-stage{opacity:0.72}
+  main section{position:relative;overflow:hidden}
+  .artifact-card,
+  .id-card,
+  .boarding-pass,
+  .frame,
+  .frame-large,
+  .frame-sm,
+  .departure-board,
+  .radio-box,
+  h2,
+  .lead{
+    will-change:transform, opacity;
+  }
+}
